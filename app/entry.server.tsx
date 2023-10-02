@@ -8,7 +8,7 @@ import * as Sentry from '@sentry/remix';
 
 Sentry.init({
   // TODO: replace with your Sentry DSN
-  dsn: 'NEXT_PUBLIC_SENTRY_DSN',
+  dsn: "NEXT_PUBLIC_SENTRY_DSN",
 
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
