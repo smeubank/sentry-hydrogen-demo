@@ -7,7 +7,7 @@ import {useEffect} from 'react';
 
 Sentry.init({
   // TODO: replace with your Sentry DSN
-  dsn: 'SENTRY_DSN',
+  dsn: 'NEXT_PUBLIC_SENTRY_DSN',
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.remixRouterInstrumentation(
