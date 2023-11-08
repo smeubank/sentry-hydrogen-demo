@@ -11,6 +11,7 @@ import * as SentryRemix from '@sentry/remix';
 
 Sentry.init({
   dsn: "https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080",
+  
   debug: true,
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
