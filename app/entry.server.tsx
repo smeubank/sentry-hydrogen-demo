@@ -42,6 +42,8 @@ export default async function handleRequest(
     ],
     workerSrc: [
       "'self'",
+      '*sentry-hydrogen-demo*',
+      'https://sentry-hydrogen-demo-*-smeubank.vercel.app',
       '*.sentry.io',
       'https://ingest.sentry.io',
       'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
