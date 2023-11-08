@@ -7,7 +7,7 @@ import {createContentSecurityPolicy} from '@shopify/hydrogen';
 import * as Sentry from '@sentry/vercel-edge';
 import * as SentryRemix from '@sentry/remix';
 
-const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
+//const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
 Sentry.init({
   dsn: "https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080",
