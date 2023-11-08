@@ -38,6 +38,10 @@ export default async function handleRequest(
       "'*.sentry.io'",
       "'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080'",
     ],
+    contentSrc: [
+      "'*.sentry.io'",
+      "'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080'",
+    ]
   });
 
   const body = await renderToReadableStream(
