@@ -5,7 +5,7 @@ import {renderToReadableStream} from 'react-dom/server';
 import {createContentSecurityPolicy} from '@shopify/hydrogen';
 
 import * as Sentry from '@sentry/vercel-edge';
-import {captureRemixServerException} from '@sentry/remix';
+import * as SentryRemix from '@sentry/remix';
 
 const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
@@ -22,7 +22,7 @@ export async function handleError(
   error: unknown,
   {request}: DataFunctionArgs,
 ): Promise<void> {
-  captureRemixServerException(error, 'remix.server', request);
+  SentryRemix.captureRemixServerException(error, 'remix.server', request);
 }
 
 export default async function handleRequest(
