@@ -6,9 +6,10 @@ import {createContentSecurityPolicy} from '@shopify/hydrogen';
 
 import * as Sentry from '@sentry/remix';
 
+const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
+
 Sentry.init({
-  // TODO: replace with your Sentry DSN
-  dsn: 'SENTRY_DSN',
+  dsn: SENTRY_DSN,
 
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
