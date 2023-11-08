@@ -36,11 +36,15 @@ export default async function handleRequest(
     connectSrc: [
       "'self'",
       '*.sentry.io',
+      'https://ingest.sentry.io',
       'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
       'https://vercel.live/api/event/tick',
     ],
     workerSrc: [
       "'self'",
+      '*.sentry.io',
+      'https://ingest.sentry.io',
+      'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
     ],  
     scriptSrc: [
       "'self'",
