@@ -33,8 +33,20 @@ export default async function handleRequest(
   remixContext: EntryContext,
 ) {
   const {nonce, header, NonceProvider} = createContentSecurityPolicy({
-      scriptSrc: [
-        "'self'",
+    connectSrc: [
+      "'self'",
+      '*.sentry.io',
+      'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
+    ],
+    workerSrc: [
+      "'self'",
+    ],  
+    scriptSrc: [
+      "'self'",
+      'https://vercel.live/_next-live/feedback/feedback.js',
+      '*vercel.live*',
+      '*sentry-hydrogen-demo*',
+      'https://sentry-hydrogen-demo-*-smeubank.vercel.app',
       '*.sentry.io',
       'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
     ]
