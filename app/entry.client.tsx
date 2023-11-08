@@ -4,10 +4,14 @@ import {hydrateRoot} from 'react-dom/client';
 import * as Sentry from '@sentry/remix';
 import {useEffect} from 'react';
 
+//const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
 Sentry.init({
-  // TODO: replace with your Sentry DSN
-  dsn: 'SENTRY_DSN',
+  dsn: "https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080",
+
+  debug: true,
+
+
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.remixRouterInstrumentation(

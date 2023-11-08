@@ -4,12 +4,15 @@ import isbot from 'isbot';
 import {renderToReadableStream} from 'react-dom/server';
 import {createContentSecurityPolicy} from '@shopify/hydrogen';
 
-import * as Sentry from '@sentry/remix';
+import * as Sentry from '@sentry/vercel-edge';
+import * as SentryRemix from '@sentry/remix';
+
+//const SENTRY_DSN = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
 Sentry.init({
-  // TODO: replace with your Sentry DSN
-  dsn: 'SENTRY_DSN',
+  dsn: "https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080",
 
+  debug: true,
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
   // We recommend adjusting this value in production
@@ -20,7 +23,7 @@ export async function handleError(
   error: unknown,
   {request}: DataFunctionArgs,
 ): Promise<void> {
-  Sentry.captureRemixServerException(error, 'remix.server', request);
+  SentryRemix.captureRemixServerException(error, 'remix.server', request);
 }
 
 export default async function handleRequest(
@@ -29,7 +32,32 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy();
+  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+    connectSrc: [
+      "'self'",
+      '*.sentry.io',
+      'https://ingest.sentry.io',
+      'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
+      'https://vercel.live/api/event/tick',
+    ],
+    workerSrc: [
+      "'self'",
+      '*sentry-hydrogen-demo*',
+      'https://sentry-hydrogen-demo-*-smeubank.vercel.app',
+      '*.sentry.io',
+      'https://ingest.sentry.io',
+      'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
+    ],  
+    scriptSrc: [
+      "'self'",
+      'https://vercel.live/_next-live/feedback/feedback.js',
+      '*vercel.live*',
+      '*sentry-hydrogen-demo*',
+      'https://sentry-hydrogen-demo-*-smeubank.vercel.app',
+      '*.sentry.io',
+      'https://78ff737bc3ce687a2ffd1d22845947bc@o4506145504559104.ingest.sentry.io/4506190612398080',
+    ]
+  });
 
   const body = await renderToReadableStream(
     <NonceProvider>
